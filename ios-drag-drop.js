@@ -13,7 +13,8 @@
     var dragDiv = 'draggable' in div;
     var evts = 'ondragstart' in div && 'ondrop' in div;
 
-    var needsPatch = !(dragDiv || evts) || /iPad|iPhone|iPod/.test(navigator.userAgent);
+    var needsPatch = (!dragDiv || evts) || Modernizr.touch;
+
     log((needsPatch ? "" : "not ") + "patching html5 drag drop");
 
     if(!needsPatch) return;
